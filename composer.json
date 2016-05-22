@@ -1,0 +1,29 @@
+{
+  "name": "andychey/excel",
+  "description": "simplify phpexcel",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andy Chey",
+      "email": "andychey@outlook.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Andychey\\Excel\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Andychey\\Excel\\": "test"
+    }
+  },
+  "require": {
+    "php": ">=5.3.3",
+    "phpoffice/phpexcel": "~1.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8"
+  }
+}
