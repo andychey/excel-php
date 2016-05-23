@@ -2,6 +2,7 @@
 
 namespace Andychey\Excel;
 
+
 class WriterTest extends \PHPUnit_Framework_TestCase
 {
     public function testSave()

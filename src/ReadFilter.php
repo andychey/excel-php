@@ -2,6 +2,7 @@
 
 namespace Andychey\Excel;
 
+
 class ReadFilter implements \PHPExcel_Reader_IReadFilter
 {
     /**
