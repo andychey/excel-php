@@ -46,7 +46,7 @@ class Writer
     protected $phpExcel;
 
     /**
-     * 列序列
+     * 列序号
      */
     protected static $column_serial = array(
         'A','B','C','D','E','F','G', 'H','I','J',
@@ -55,6 +55,11 @@ class Writer
         'AE', 'AF','AG','AH','AI','AJ','AK','AL','AM','AN',
         'AO', 'AP','AQ','AR','AS','AT','AU','AV','AW','AX',
     );
+
+    /**
+     * 最大数字宽度
+     */
+    const MAX_NUMBER_WIDTH = 11;
 
     /**
      * Writer constructor
@@ -201,6 +206,9 @@ class Writer
                     $value = $data;
                 }
                 if (is_scalar($value) && null !== $value) {
+                    if (is_numeric($value) && strlen($value) > self::MAX_NUMBER_WIDTH) {
+                        $value = '`' . $value;
+                    }
                     $actSheet->setCellValue($cell, $value);
                 }
             }
