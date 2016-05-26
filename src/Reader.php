@@ -3,6 +3,9 @@
 namespace Andychey\Excel;
 
 use PHPExcel;
+use PHPExcel_IOFactory;
+
+use InvalidArgumentException;
 
 
 class Reader
@@ -52,7 +55,7 @@ class Reader
     public static function loadToArray($filename, $skip_rows = null, $type = null)
     {
         if (! file_exists($filename)) {
-            throw new \InvalidArgumentException("File 「{$filename}」 does't exist");
+            throw new InvalidArgumentException("File 「{$filename}」 does't exist");
         }
         self::$filename = $filename;
         if (! is_null($type)) {
@@ -83,18 +86,20 @@ class Reader
     /**
      * 创建阅读器
      *
-     * @return \PHPExcel_Reader_IReader
+     * @return PHPExcel_Reader_IReader
      */
     protected static function createReader()
     {
-        new PHPExcel();
         switch (self::$type) {
+            case 'csv':
+                $reader = PHPExcel_IOFactory::createReader('CSV');
+                break;
             case 'xls':
-                $reader = \PHPExcel_IOFactory::createReader('Excel5');
+                $reader = PHPExcel_IOFactory::createReader('Excel5');
                 break;
             case 'xlsx':
             default:
-                $reader = \PHPExcel_IOFactory::createReader('Excel2007');
+                $reader = PHPExcel_IOFactory::createReader('Excel2007');
                 break;
         }
         return $reader;

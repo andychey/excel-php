@@ -3,6 +3,9 @@
 namespace Andychey\Excel;
 
 use PHPExcel;
+use PHPExcel_IOFactory;
+
+use InvalidArgumentException;
 
 
 class Writer
@@ -140,7 +143,7 @@ class Writer
     public function addRow(array $row)
     {
         if (count($row) != count($this->head)) {
-            throw new \InvalidArgumentException("The row does't match this head");
+            throw new InvalidArgumentException("The row does't match this head");
         }
         $this->data[] = $row;
     }
@@ -235,12 +238,15 @@ class Writer
     protected function createWriter()
     {
         switch ($this->type) {
+            case 'csv':
+                $writer = PHPExcel_IOFactory::createWriter($this->phpExcel, 'CSV');
+                break;
             case 'xls':
-                $writer = \PHPExcel_IOFactory::createWriter($this->phpExcel, 'Excel5');
+                $writer = PHPExcel_IOFactory::createWriter($this->phpExcel, 'Excel5');
                 break;
             case 'xlsx':
             default:
-                $writer = \PHPExcel_IOFactory::createWriter($this->phpExcel, 'Excel2007');
+                $writer = PHPExcel_IOFactory::createWriter($this->phpExcel, 'Excel2007');
         }
         return $writer;
     }

@@ -2,8 +2,10 @@
 
 namespace Andychey\Excel;
 
+use PHPUnit_Framework_TestCase;
 
-class WriterTest extends \PHPUnit_Framework_TestCase
+
+class WriterTest extends PHPUnit_Framework_TestCase
 {
     public function testSave()
     {

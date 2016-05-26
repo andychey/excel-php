@@ -2,8 +2,10 @@
 
 namespace Andychey\Excel;
 
+use PHPExcel_Reader_IReadFilter;
 
-class ReadFilter implements \PHPExcel_Reader_IReadFilter
+
+class ReadFilter implements PHPExcel_Reader_IReadFilter
 {
     /**
      * 要忽略的行
