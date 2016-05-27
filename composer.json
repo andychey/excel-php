@@ -1,7 +1,6 @@
 {
   "name": "andychey/excel",
   "description": "simplify phpexcel",
-  "version": "1.0.0",
   "type": "library",
   "minimum-stability": "stable",
   "license": "MIT",
